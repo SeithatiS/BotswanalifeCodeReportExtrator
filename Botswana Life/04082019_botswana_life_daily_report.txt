@@ -1,0 +1,1 @@
+Date|PostOffice|TransactionId|CustomerName|IdNumber|ContractId|ContactNumber|Amount

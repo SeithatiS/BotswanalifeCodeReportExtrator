@@ -1,0 +1,47 @@
+select  a.[Post Office Code] LocationId, b.ApplicationId LocationName, a.LocationType LocationType, a.Prefix Prefix,
+  substring(b.PostBoxId,3,len(b.postboxid)-2) as BoxNumber, a.Suffix,
+  case when SUBSTRING(b.PostBoxId, 1, 2) = 'PB' THEN 'G'
+          when SUBSTRING(b.PostBoxId, 1, 2) = 'PO' THEN 'X'
+   end as ServiceType, 
+   '0' HasPrivateBag, '0' HasHomeDelivery, b.Name CustomerName, b.AddressLine1 [Address],
+   case when b.HolderType = 'BusinessUser' THEN 'B'
+        when b.HolderType = 'IndividualUser' THEN 'I'
+             when b.HolderType = 'Government' THEN 'G'
+             when b.HolderType = 'Parastatal' THEN 'P'
+       end as CustomerType, b.PhoneNoM MobileNumber, b.EMail EmailAddress,
+       case when b.[IdType] = 'NationalId' THEN 'N'
+             when b.[IdType] = 'RegNum' THEN 'R'
+             else null
+    end as ID, b.IdNumber IdNumber, 
+      -- FORMAT(convert(date, SUBSTRING([PaidUntil], 1, 6) + '20' + SUBSTRING(PaidUntil, 7, 2), 105), 'yyyy-MM-dd') RenewedUpto,
+	  PaidUntil,
+       case when b.HolderType = 'IndividualUser' and SUBSTRING(b.PostBoxId, 1, 2) = 'PO' then '18.33'
+       when b.HolderType = 'IndividualUser' and SUBSTRING(b.PostBoxId, 1, 2) = 'PB' then '83.33'
+       when b.HolderType = 'BusinessUser' and SUBSTRING(b.PostBoxId, 1, 2) = 'PB' then '100'
+       when b.HolderType = 'BusinessUser' and SUBSTRING(b.PostBoxId, 1, 2) = 'PO' then '50'
+       when b.HolderType = 'Government' and SUBSTRING(b.PostBoxId, 1, 2) = 'PO' then '190'
+       when b.HolderType = 'Government' and SUBSTRING(b.PostBoxId, 1, 2) = 'PB' then '266.67'
+     when b.HolderType = 'Parastatal' and SUBSTRING(b.PostBoxId, 1, 2) = 'PO' then '190'
+       when b.HolderType = 'Parastatal' and SUBSTRING(b.PostBoxId, 1, 2) = 'PB' then '266.67'
+       end as RentalPaidPerMonth
+  from [dbo].BoxDataBK_2 as a, [dbo].boxdb as b
+  where a.[Post Box Location] = b.ApplicationId
+  and b.PaidUntil is not null
+  and b.ApplicationId = 'GOLDEN VALLEY'
+ and a.[Post Office Code] = 'BWNFTN04'
+  and b.GroupId = '4000'
+  --and b.PaidUntil <> ''
+
+
+  select * from boxdb where  groupId = '2021'and ApplicationId like '%GOLDEN VALLEY%'
+
+  select * from BoxDataBK_2 where [Post Box Location] like '%Golden%'
+
+ -- BWNFTN07
+ BWSGBV
+
+ 
+
+
+
+  select * from boxdb where ApplicationId = 'Metsef' and GroupId ='4000' and PostBoxId  between 'PO30001' and 'PO30999'

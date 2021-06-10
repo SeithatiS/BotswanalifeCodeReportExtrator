@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BotswanaLifeModelStoreContainer" CdmEntityContainer="BotswanaLifeEntities">
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="BotswanaLifeModel.Client">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="WebServiceClientId" ColumnName="WebServiceClientId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PassCode" ColumnName="PassCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Requests">
+      <EntityTypeMapping TypeName="BotswanaLifeModel.Request">
+        <MappingFragment StoreEntitySet="Requests">
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="MessageIDDateTimeRequest" ColumnName="MessageIDDateTimeRequest" />
+          <ScalarProperty Name="ResponseDateTime" ColumnName="ResponseDateTime" />
+          <ScalarProperty Name="MessageIDDateTimeResponse" ColumnName="MessageIDDateTimeResponse" />
+          <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="XMLResponse" ColumnName="XMLResponse" />
+          <ScalarProperty Name="IsSuccessful" ColumnName="IsSuccessful" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          <ScalarProperty Name="TransactionValue" ColumnName="TransactionValue" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="ResponseNumber" ColumnName="ResponseNumber" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="IdNumber" ColumnName="IdNumber" />
+          <ScalarProperty Name="Client_WebServiceClientId" ColumnName="Client_WebServiceClientId" />
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostOffices">
+      <EntityTypeMapping TypeName="BotswanaLifeModel.PostOffice">
+        <MappingFragment StoreEntitySet="PostOffices">
+          <ScalarProperty Name="PostOfficeSK" ColumnName="PostOfficeSK" />
+          <ScalarProperty Name="PostOfficeName" ColumnName="PostOfficeName" />
+          <ScalarProperty Name="IPSCode" ColumnName="IPSCode" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
